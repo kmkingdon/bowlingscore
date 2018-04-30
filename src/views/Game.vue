@@ -1,19 +1,19 @@
 <template>
-  <div class="home">
+  <div class="game">
     <Header />
-    <GameSignUp />
+    <GameDashboard />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Header from '@/components/Header.vue';
-import GameSignUp from '@/components/GameSignUp.vue';
+import GameDashboard from '@/components/GameDash.vue';
 
 export default {
-  name: 'home',
+  name: 'Game',
   components: {
-    GameSignUp,
+    GameDashboard,
     Header
   }
 }
@@ -21,7 +21,7 @@ export default {
 
 <style scoped>
 
-#home {
+#game {
   display: grid;
   grid-template-rows: 10vh 90vh;
   grid-template-columns: 15vw 70vw 15vw;
