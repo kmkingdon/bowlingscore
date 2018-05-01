@@ -11,16 +11,17 @@
         <h1 class="frame">8</h1>
         <h1 class="frame">9</h1>
         <h1 class="frame">10</h1>
+        <h1 class="frame">Bonus</h1>
       </div>
       <div class="first-attempts">
-        <h2 v-for="score in firstAttempts[this.index]" v-bind:key="score">{{score}}</h2>
+        <h2 v-for="(score, index) in firstAttempts[this.index]" v-bind:key="index">{{score}}</h2>
       </div>
       <div class="second-attempts">
-        <h3 v-for="score in secondAttempts[this.index]" v-bind:key="score">{{score}}</h3>
+        <h3 v-for="(score, index) in secondAttempts[this.index]" v-bind:key="index">{{score}}</h3>
       </div>
       <div class="final-score">
         <h4>Total Score:</h4>
-        <h5>{{this.totalScore[this.index]}}</h5>
+        <h5 :class="finalScore[this.index] ? 'final': ''">{{this.totalScore[this.index]}}</h5>
       </div>
   </div>
 </template>
@@ -40,6 +41,10 @@ export default {
       'firstAttempts',
       'secondAttempts',
       'totalScore',
+      'spareBonus',
+      'strikeBonus',
+      'doubleStrikeBonus',
+      'finalScore'
   ]),
   methods:{
       ...mapActions([
@@ -58,7 +63,7 @@ export default {
         height: 100%;
         display: grid;
         grid-template-rows: 33% 33% 33%;
-        grid-template-columns: 80% 20%;
+        grid-template-columns: 70vw 10vw;
     }
 
     .heading{
@@ -70,11 +75,11 @@ export default {
     }
 
     .heading h1 {
-        width: 10%;
+        width: 6.36vw;
         height: 100%;
         color: white;
         text-align: center;
-        padding-top: .5rem;
+        padding-top: .3rem;
         box-sizing: border-box;
         border: solid black 1px;
     }
@@ -87,7 +92,7 @@ export default {
     }
 
     .first-attempts h2 {
-        width: 10%;
+        width: 6.36vw;
         height: 100%;
         text-align: center;
         padding-top: .5rem;
@@ -103,7 +108,7 @@ export default {
     }
 
     .second-attempts h3 {
-        width: 10%;
+        width: 6.36vw;
         height: 100%;
         text-align: center;
         padding-top: .5rem;
@@ -122,7 +127,7 @@ export default {
         width: 100%;
         height: 33%;
         text-align: center;
-        padding-top: .5rem;
+        padding-top: .3rem;
         background-color: grey;
         box-sizing: border-box;
         border: solid black 1px;
@@ -136,6 +141,10 @@ export default {
         font-size: 2rem;
         box-sizing: border-box;
         border: solid black 1px;
+    }
+
+    .final {
+        background-color: red;
     }
 
    
